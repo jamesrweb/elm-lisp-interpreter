@@ -46,12 +46,9 @@ categoriseTokensHelper : Tokens -> TokenIdentities -> Maybe TokenIdentities
 categoriseTokensHelper tokens identities =
     case tokens of
         [] ->
-            case List.head (List.reverse identities) of
-                Just last ->
-                    Just [ last ]
-
-                Nothing ->
-                    Just []
+            List.reverse identities
+                |> List.head
+                |> Maybe.map List.singleton
 
         token :: rest ->
             let
@@ -59,12 +56,9 @@ categoriseTokensHelper tokens identities =
                     token
             in
             if value == "(" then
-                case categoriseTokensHelper rest [] of
-                    Just identifiers ->
-                        categoriseTokensHelper rest (List.append identities identifiers)
-
-                    _ ->
-                        Just []
+                Maybe.andThen
+                    (\ids -> categoriseTokensHelper rest (List.append identities ids))
+                    (categoriseTokensHelper rest [])
 
             else if value == ")" then
                 Just identities
