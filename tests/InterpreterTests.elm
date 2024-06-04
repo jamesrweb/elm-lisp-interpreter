@@ -1,17 +1,23 @@
 module InterpreterTests exposing (..)
 
 import Expect
-import Interpreter exposing (parse)
+import Interpreter exposing (integer, parse, symbol)
 import Test
 
 
 suite : Test.Test
 suite =
     Test.describe "The Interpreter Module"
-        [ Test.describe "The tokenise function"
-            [ Test.test "An integer atom" <|
+        [ Test.describe "The parse function"
+            [ Test.test "A sum of two numbers" <|
                 \_ ->
-                    Expect.equal (parse "( 1 )") (Ok "1")
+                    Expect.equal (parse "(+ 1 2)")
+                        (Ok
+                            [ symbol "+"
+                            , integer 1
+                            , integer 2
+                            ]
+                        )
 
             -- , Test.test "A string atom" <|
             --     \_ ->

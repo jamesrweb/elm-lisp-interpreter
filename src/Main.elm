@@ -14,14 +14,14 @@ main =
 
 type alias Model =
     { input : String
-    , result : Result Peg.Error String
+    , result : Result Peg.Error Interpreter.State
     }
 
 
 init : Model
 init =
     { input = "(+ 1 2)"
-    , result = Ok ""
+    , result = Ok []
     }
 
 
