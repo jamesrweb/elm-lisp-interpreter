@@ -1,0 +1,13 @@
+minimumReleaseAge: 1440
+
+audit:
+  level: info
+  ignorePrune: true
+
+allowBuilds:
+  elm: true
+  elm-coverage: true
+  elm-doc-preview: true
+  elm-format: true
+  elm-json: true
+  elmi-to-json: true
