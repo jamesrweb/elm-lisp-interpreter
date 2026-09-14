@@ -1,0 +1,19 @@
+name: Test
+
+description: Run tests
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v6
+      with:
+        node-version-file: package.json
+        cache: pnpm
+
+    - uses: pnpm/action-setup@v5
+
+    - run: pnpm install --frozen-lockfile
+      shell: bash
+
+    - run: pnpm run test
+      shell: bash
