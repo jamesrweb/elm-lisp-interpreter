@@ -1,6 +1,6 @@
 module Interpreter exposing (State, decimal, entryPoint, integer, list, parse, symbol, whitespace)
 
-import CommonLispPeg exposing (grammar)
+import CommonLispPeg
 import Peg
 
 
@@ -85,10 +85,6 @@ parse input =
 
         predicate : String -> String -> State -> ( Bool, State )
         predicate name match state =
-            let
-                _ =
-                    Debug.log "name, match, state" [ name, match, Debug.toString state ]
-            in
             ( True, state )
 
         go : Peg.Grammar -> Result Peg.Error State

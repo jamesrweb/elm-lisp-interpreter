@@ -1,10 +1,10 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text)
+import Html
 import Html.Attributes
 import Html.Events
-import Interpreter exposing (parse)
+import Interpreter
 import Peg
 
 
@@ -55,9 +55,9 @@ view model =
         , Html.button [ Html.Events.onClick ParseInput ] [ Html.text "Parse" ]
         , Html.hr [] []
         , case model.result of
-            Ok result ->
-                Html.text ("Parsed: " ++ Debug.toString result)
+            Ok _ ->
+                Html.text "Parsed: OK"
 
-            Err err ->
-                Html.text ("Error: " ++ Debug.toString err)
+            Err _ ->
+                Html.text "Parsed: Error"
         ]

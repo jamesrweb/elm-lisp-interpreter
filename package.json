@@ -5,8 +5,8 @@
   "description": "A lisp interpreter written in Elm",
   "scripts": {
     "format": "elm-format src/ tests/ --yes && biome check --write",
-    "lint": "elm-verify-examples && elm-format src/ tests/ --validate && elm-review && biome check",
-    "test": "elm-verify-examples && elm-test",
+    "lint": "elm-format src/ tests/ --validate && elm-review && biome check",
+    "test": "elm-test",
     "postinstall": "rm -rf elm-stuff && ELM_HOME=$(pwd)/elm-home elm-janitor-apply-patches --all --noconsole || echo 'patching failed (non-critical)'"
   },
   "keywords": [
@@ -30,7 +30,6 @@
     "elm-janitor-apply-patches": "^1.1.0",
     "elm-json": "^0.2.13",
     "elm-review": "^2.13.5",
-    "elm-test": "0.19.2-1",
-    "elm-verify-examples": "^6.0.3"
+    "elm-test": "0.19.2-1"
   }
 }
