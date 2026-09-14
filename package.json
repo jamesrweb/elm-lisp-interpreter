@@ -1,0 +1,36 @@
+{
+  "name": "elm-lisp-interpreter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lisp interpreter written in Elm",
+  "scripts": {
+    "format": "elm-format src/ tests/ --yes && biome check --write",
+    "lint": "elm-verify-examples && elm-format src/ tests/ --validate && elm-review && biome check",
+    "test": "elm-verify-examples && elm-test",
+    "postinstall": "rm -rf elm-stuff && ELM_HOME=$(pwd)/elm-home elm-janitor-apply-patches --all --noconsole || echo 'patching failed (non-critical)'"
+  },
+  "keywords": [
+    "elm",
+    "lisp",
+    "interpreter",
+    "functional-programming"
+  ],
+  "author": "James Robb <47126579+jamesrweb@users.noreply.github.com>",
+  "license": "BSD-3-Clause",
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "node": ">=24.21.0"
+  },
+  "dependencies": {
+    "elm": "0.19.2-0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.13",
+    "elm-format": "^0.8.8",
+    "elm-janitor-apply-patches": "^1.1.0",
+    "elm-json": "^0.2.13",
+    "elm-review": "^2.13.5",
+    "elm-test": "0.19.2-1",
+    "elm-verify-examples": "^6.0.3"
+  }
+}
