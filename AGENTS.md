@@ -21,7 +21,8 @@
    actions without explicit permission. If a CI fix is needed, propose the
    change and wait for approval.
 8. **No local publishing:** NEVER publish to the Elm registry or create GitHub
-   releases locally.
+   releases locally — publishing happens via the Elm registry workflow, which
+   is not yet automated for this package.
 
 ## Project Standards
 
@@ -42,11 +43,13 @@ messages, and any other text MUST use British English (e.g., `organisation` not
 `organization`, `normalise` not `normalize`, `colour` not `color`, `behaviour`
 not `behavior`, `licence` not `license`, `centre` not `center`).
 
-### Elm Application Conventions
+### Elm Package Conventions
 
-- **Application type:** `elm.json` declares `"type": "application"` with an
-  exact `elm-version` (`0.19.2`) and exact dependency versions — never convert
-  to package style; this project is not published to the Elm registry
+- **Published package:** This is a published Elm package
+  (`jamesrweb/elm-lisp-interpreter`). `elm.json` declares `"type": "package"`
+  with a semver range for `elm-version` — never convert it to application style
+- **Version bumps:** `elm bump` before release; publish new versions through
+  the Elm registry workflow
 - **Source directories:** `src/` is declared in `source-directories`;
   `tests/` is found implicitly by elm-test. Keep `elm.json` in sync when
   adding directories
@@ -199,7 +202,7 @@ A lisp interpreter written in Elm, published as a learning exploration of parser
 
 ## Architecture
 
-- `src/` — the application source (pure Elm, no JavaScript interop)
+- `src/` — the package source (pure Elm, no JavaScript interop)
 - `tests/` — `elm-test` suites
 - `review/` — the `elm-review` project with its own `elm.json`
 - `.github/actions/` — composite actions (`lint`, `test`) shared by the CI workflow
@@ -225,9 +228,9 @@ A lisp interpreter written in Elm, published as a learning exploration of parser
 
 ## Guardrails
 
-- **Never publish or create releases.** This is an application, not a published
-  package
-- **Never convert `elm.json` to package type** — it is an application by design
+- **Never publish or create releases locally.** Publishing to the Elm registry
+  is not yet automated for this package — coordinate releases explicitly
+- **Never convert `elm.json` to application style** — it is a published package
 - **Never disable or skip tests, review rules, or format checks** to make a
   change pass. Fix the code, not the gate
 - **Never commit `elm-stuff/`, `elm-home/`, or `node_modules/`** — generated
