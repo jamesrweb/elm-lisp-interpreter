@@ -2,7 +2,7 @@
   "type": "package",
   "name": "jamesrweb/elm-lisp-interpreter",
   "summary": "Parses lisp like code into an AST",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "version": "1.0.0",
   "exposed-modules": ["Interpreter"],
   "elm-version": "0.19.0 <= v < 0.20.0",
